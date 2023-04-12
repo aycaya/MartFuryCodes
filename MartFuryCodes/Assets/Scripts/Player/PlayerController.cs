@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-       
+
         gravityForce = Physics.gravity;
         charController = GetComponent<CharacterController>();
         SpeedUpgrade = PlayerPrefs.GetInt("Speed", 0);

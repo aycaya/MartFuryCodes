@@ -51,7 +51,7 @@ public class PickUp : MonoBehaviour
                 PickUpFunc(other.gameObject);
             }
         }
-        else if (other.gameObject.CompareTag("Shelver") && !isCooldownOn )
+        else if (other.gameObject.CompareTag("Shelver") && !isCooldownOn)
         {
             if (other.GetComponent<ShelverAI>().isItReadyToCollect)
             {
@@ -64,7 +64,7 @@ public class PickUp : MonoBehaviour
 
                     isCooldownOn = true;
                     currentTimer = 0f;
-                    Invoke("CooldownFinish", 2f);                    
+                    Invoke("CooldownFinish", 2f);
                     loadingBar.fillAmount = 0f;
                     grayPart.SetActive(false);
                     PickUpFunc(other.gameObject);
@@ -89,7 +89,7 @@ public class PickUp : MonoBehaviour
             currentTimer = 0f;
             loadingBar.fillAmount = 0f;
             grayPart.SetActive(false);
-        } 
+        }
         else if (other.gameObject.CompareTag("Shelver"))
         {
             currentTimer = 0f;

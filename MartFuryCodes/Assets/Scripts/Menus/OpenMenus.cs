@@ -15,11 +15,7 @@ public class OpenMenus : MonoBehaviour
         upgradeMenu = uiCanvas.transform.Find("Upgrade").gameObject;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
     public void OpenCardMenu()
     {
         cardMenu.SetActive(true);

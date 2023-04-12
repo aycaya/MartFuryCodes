@@ -20,13 +20,13 @@ public class MoneyManager : MonoBehaviour
 
     }
 
-    
+
     public bool HasEnoughCoin(int amount)
     {
         var coin = PlayerPrefs.GetInt("Coin", 0);
         if (coin >= amount)
         {
-           
+
             return true;
         }
         else
@@ -40,7 +40,7 @@ public class MoneyManager : MonoBehaviour
         var gem = PlayerPrefs.GetInt("Gem", 0);
         if (gem >= amount)
         {
-            
+
 
             return true;
         }

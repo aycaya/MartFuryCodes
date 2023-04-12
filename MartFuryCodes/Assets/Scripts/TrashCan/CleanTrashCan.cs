@@ -15,13 +15,13 @@ public class CleanTrashCan : MonoBehaviour
             CleanTheTrashCan();
 
             coolingdown = true;
-         
+
 
 
         }
-        else if(transform.childCount > 0)
+        else if (transform.childCount > 0)
         {
-          
+
             coolDT -= Time.deltaTime;
 
             if (coolDT <= 0)
@@ -36,7 +36,7 @@ public class CleanTrashCan : MonoBehaviour
     {
         if (transform.childCount > 0)
         {
-            for(int i = transform.childCount-1; i >= 0 ; i--)
+            for (int i = transform.childCount - 1; i >= 0; i--)
             {
                 Destroy(transform.GetChild(i).gameObject);
             }

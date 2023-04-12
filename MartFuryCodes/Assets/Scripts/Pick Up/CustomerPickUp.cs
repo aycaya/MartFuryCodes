@@ -8,15 +8,15 @@ public class CustomerPickUp : MonoBehaviour
     [SerializeField] float waitTimer = 1f;
     float currentTimer = 0;
     bool isCooldownOn = false;
-    
+
 
     GameObject[] GridsPieces;
     bool[] isGridEmpty;
-   
-   
+
+
     private void Start()
     {
-        
+
         GridsPieces = new GameObject[transform.childCount];
         isGridEmpty = new bool[transform.childCount];
 
@@ -32,7 +32,7 @@ public class CustomerPickUp : MonoBehaviour
         if (other.gameObject.CompareTag("Customer") && !isCooldownOn)
         {
             currentTimer += Time.deltaTime;
-          
+
             if (currentTimer >= waitTimer)
             {
 
@@ -42,8 +42,8 @@ public class CustomerPickUp : MonoBehaviour
                 PickUpFunc(other.gameObject);
             }
         }
-       
-        
+
+
     }
 
     private void CooldownFinish()
@@ -56,9 +56,9 @@ public class CustomerPickUp : MonoBehaviour
         if (other.gameObject.CompareTag("Customer"))
         {
             currentTimer = 0f;
-           
+
         }
-      
+
     }
 
     public void PickUpFunc(GameObject picker)

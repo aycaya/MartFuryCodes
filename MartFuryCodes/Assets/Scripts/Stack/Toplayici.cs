@@ -10,17 +10,17 @@ public class Toplayici : MonoBehaviour
     List<Transform> objectList = new List<Transform>();
     [SerializeField] bool isPlayer;
     int playerCapacity;
-    
+
     private void Awake()
     {
         playerCapacity = PlayerPrefs.GetInt("PlayerCapacity", 3);
         SetOriginalSpherePositions();
-      
+
     }
 
     private void SetOriginalSpherePositions()
     {
-       
+
         if (isPlayer)
         {
             for (int i = 0; i < playerCapacity; i++)
@@ -35,7 +35,7 @@ public class Toplayici : MonoBehaviour
                 objectList.Add(parentObjectList.GetChild(i));
             }
         }
-      
+
     }
     public void AddPlayerCapacity()
     {
@@ -52,18 +52,18 @@ public class Toplayici : MonoBehaviour
     }
     public void OnPickUp(Collactables collectable)
     {
-       
-       
-            int availableChildIndex = CheckIfEmptySpaceAvailable();
-            if (availableChildIndex == -1)
-            {
-                return;
-            }
-            collectable.ToplandiMi = true;
-         
-            collectable.SetFlightTarget(objectList[availableChildIndex]);
-            collectable.gameObject.transform.SetParent(objectList[availableChildIndex]);
-     
+
+
+        int availableChildIndex = CheckIfEmptySpaceAvailable();
+        if (availableChildIndex == -1)
+        {
+            return;
+        }
+        collectable.ToplandiMi = true;
+
+        collectable.SetFlightTarget(objectList[availableChildIndex]);
+        collectable.gameObject.transform.SetParent(objectList[availableChildIndex]);
+
     }
 
     public int CheckIfEmptySpaceAvailable()
@@ -88,5 +88,5 @@ public class Toplayici : MonoBehaviour
         }
         return true;
     }
-   
+
 }

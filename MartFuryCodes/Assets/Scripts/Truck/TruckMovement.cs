@@ -14,16 +14,16 @@ public class TruckMovement : MonoBehaviour
     [SerializeField] Transform stopPos;
     Animator animator;
     Vector3 move;
-    
+
     bool arrived = false;
     TruckLoader truckLoader;
     bool isMoving;
     TruckPickUp truckPickUp;
     [SerializeField] Toplayici toplayici;
-    
+
     void Start()
     {
-        
+
         canMove = true;
         startPos = transform.position;
         startRot = transform.rotation;
@@ -43,7 +43,7 @@ public class TruckMovement : MonoBehaviour
         }
         else
         {
-          
+
             coolDT -= Time.deltaTime;
 
             if (coolDT <= 0)
@@ -55,11 +55,11 @@ public class TruckMovement : MonoBehaviour
         if (arrived)
         {
             canMove = true;
-           StartCoroutine(WaitAndStartOver());
-          
+            StartCoroutine(WaitAndStartOver());
+
         }
     }
-     void TruckMoving()
+    void TruckMoving()
     {
         if (!isMoving)
         {
@@ -67,15 +67,15 @@ public class TruckMovement : MonoBehaviour
             truckLoader.LoadTruck();
 
         }
-        
+
         if (arrived)
         {
             return;
         }
-      
+
         move = Vector3.MoveTowards(transform.position, stopPos.position, Time.deltaTime * .5f);
         transform.position = move;
-       
+
     }
     public IEnumerator WaitAndStartOver()
     {
@@ -96,10 +96,10 @@ public class TruckMovement : MonoBehaviour
         {
             yield return null;
         }
-       
+
 
     }
-     void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("TruckStop"))
         {
@@ -107,5 +107,5 @@ public class TruckMovement : MonoBehaviour
             arrived = true;
         }
     }
-  
+
 }

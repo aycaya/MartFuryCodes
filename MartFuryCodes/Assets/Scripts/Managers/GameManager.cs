@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-     int currentLevel;
+    int currentLevel;
     private void Awake()
     {
         currentLevel = PlayerPrefs.GetInt("level", 1);
@@ -20,5 +20,5 @@ public class GameManager : MonoBehaviour
             currentLevel = PlayerPrefs.GetInt("level", 1);
         }
     }
-   
+
 }

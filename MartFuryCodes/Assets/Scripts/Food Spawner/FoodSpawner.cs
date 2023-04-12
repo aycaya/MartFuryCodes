@@ -8,8 +8,8 @@ public class FoodSpawner : MonoBehaviour
     bool[] isGridEmpty;
     bool coolingdown = false;
     [SerializeField] GameObject objectToBeSpawned;
-    [SerializeField] float coolDownTime =5f;
-     float spawnCDT =0f;
+    [SerializeField] float coolDownTime = 5f;
+    float spawnCDT = 0f;
     bool isItFull;
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class FoodSpawner : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
             GridsPieces[i] = transform.GetChild(i).gameObject;
-           
+
         }
 
         for (int i = 0; i < GridsPieces.Length; i++)
@@ -34,7 +34,7 @@ public class FoodSpawner : MonoBehaviour
                 isGridEmpty[i] = true;
             }
         }
-        
+
     }
 
     // Update is called once per frame
@@ -46,7 +46,8 @@ public class FoodSpawner : MonoBehaviour
             SpawnObjects();
             coolingdown = true;
         }
-        else { 
+        else
+        {
 
             spawnCDT += Time.deltaTime;
             if (spawnCDT >= coolDownTime)
@@ -57,12 +58,12 @@ public class FoodSpawner : MonoBehaviour
             }
         }
     }
-  
+
     void SpawnObjects()
     {
         if (!IsItFullCheck())
         {
-            
+
 
             int index = 0;
             while (!isGridEmpty[index])
@@ -75,9 +76,9 @@ public class FoodSpawner : MonoBehaviour
             isGridEmpty[index] = false;
 
             objectSpawn.transform.localEulerAngles = Vector3.zero;
-            objectSpawn.transform.localPosition =new  Vector3(0,0,0);
+            objectSpawn.transform.localPosition = new Vector3(0, 0, 0);
         }
-        
+
     }
     bool IsItFullCheck()
     {
@@ -113,10 +114,10 @@ public class FoodSpawner : MonoBehaviour
         }
 
     }
-    public void  PickUpFunc(GameObject picker)
+    public void PickUpFunc(GameObject picker)
     {
         bool tempTrue = false;
-        int index=0;
+        int index = 0;
 
         Vector3 Destination = picker.transform.position;
 
@@ -140,10 +141,10 @@ public class FoodSpawner : MonoBehaviour
             float timer = 0f;
 
             isGridEmpty[index] = true;
-           
+
             picker.GetComponent<Toplayici>().OnPickUp(temp.GetComponent<Collactables>());
-              
+
         }
     }
-    
+
 }

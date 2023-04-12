@@ -6,7 +6,7 @@ using UnityEngine;
 using TMPro;
 
 public class UnlockingAreas : MonoBehaviour
-{ 
+{
     public int PriceOfArea = 100;
     private int tempPrice;
     private int tempCoinNeed;
@@ -29,7 +29,7 @@ public class UnlockingAreas : MonoBehaviour
     float cooldownTime = 1f;
     bool isDone = false;
     float t2;
-   
+
     float coinUpwardsModifier = 5f;
     float flightTime = 1f;
     UnlockerManager unlockerManager;
@@ -57,7 +57,7 @@ public class UnlockingAreas : MonoBehaviour
             isItSelled = false;
 
 
-        
+
     }
 
     void Update()
@@ -67,11 +67,11 @@ public class UnlockingAreas : MonoBehaviour
         {
             isCoroutineStart = true;
             Area.SetActive(true);
-           
+
 
             isDone = true;
             t2 = 0.01f;
-           
+
         }
 
         if (isDone)
@@ -101,7 +101,7 @@ public class UnlockingAreas : MonoBehaviour
             }
             if (PriceOfArea <= 0)
             {
-                
+
                 PlayerPrefs.SetInt(isItUnlockedID, 1);
                 var param = PlayerPrefs.GetInt("UnlockedAreasNo", 0);
                 param++;
@@ -113,7 +113,7 @@ public class UnlockingAreas : MonoBehaviour
         if (PriceOfArea <= 0)
         {
             isItSelled = true;
-           
+
 
         }
     }

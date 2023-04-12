@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Collactables : MonoBehaviour
 {
-    [SerializeField] 
+    [SerializeField]
     public int Index { get; set; }
     public int colorCode = 0;
     private bool toplandiMi = false;
     ItemMovementHandler itemMovement;
-   public enum WhichItem
+    public enum WhichItem
     {
         Pumpkin,
         Chicken,
@@ -48,7 +48,7 @@ public class Collactables : MonoBehaviour
                 break;
 
             default:
-                
+
                 break;
 
         }
@@ -61,7 +61,7 @@ public class Collactables : MonoBehaviour
         }
         set
         {
-          
+
             toplandiMi = value;
         }
     }
@@ -95,5 +95,5 @@ public class Collactables : MonoBehaviour
     {
         itemMovement.GameEndJump();
     }
-    
+
 }

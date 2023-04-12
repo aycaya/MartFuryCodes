@@ -32,10 +32,10 @@ public class Cashier : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
     }
 
-    public void CashierPickUpProduct(GameObject parentObject, GameObject customer) 
+    public void CashierPickUpProduct(GameObject parentObject, GameObject customer)
     {
         if (!CashierTrigger.useRegister)
         {
@@ -47,7 +47,7 @@ public class Cashier : MonoBehaviour
             return;
 
         }
-        
+
         for (int i = parentObject.transform.childCount - 1; i >= 0; i--)
         {
             currentTimer += Time.deltaTime;
@@ -62,54 +62,54 @@ public class Cashier : MonoBehaviour
                 GameObject temp = parentObject.transform.GetChild(i).gameObject;
                 temp.GetComponentInChildren<ItemMovementHandler>().Target = target;
                 temp.transform.GetChild(0).parent = transform;
-               
+
             }
         }
         if (parentObject.transform.GetChild(0).childCount == 0)
         {
-            
+
             StartCoroutine(ChangeToCoin(customer));
-            
+
         }
-       
+
     }
-    
 
 
-    IEnumerator ChangeToCoin(GameObject customer) 
+
+    IEnumerator ChangeToCoin(GameObject customer)
     {
         if (transform.childCount == 4)
         {
             yield break;
         }
-        
+
 
         yield return new WaitForSeconds(0.5f);
-       
+
         while (transform.childCount - 1 > 3)
         {
-           
+
             yield return new WaitForSeconds(cashierSpeed);
             if (Vector3.Distance(transform.GetChild(transform.childCount - 1).transform.position, target.position) < 0.1f)
             {
-              
-                whichItem= transform.GetChild(transform.childCount - 1).gameObject.GetComponent<Collactables>().selectedItem;
+
+                whichItem = transform.GetChild(transform.childCount - 1).gameObject.GetComponent<Collactables>().selectedItem;
                 GameObject p = Instantiate(coinPrefab, target.transform.position, Quaternion.identity);
-                p.GetComponent<CoinCollectingAnimForUI>().Item=whichItem;
+                p.GetComponent<CoinCollectingAnimForUI>().Item = whichItem;
                 p.GetComponent<CoinCollectingAnimForUI>().initialPos = target.transform.position;
                 // p.transform.parent = transform;
                 Destroy(transform.GetChild(transform.childCount - 1).gameObject);
-               
+
 
             }
-            
+
             yield return null;
 
         }
         cashJobIsDone = true;
         customer.GetComponent<CustomerAI>().isCashJobDone = true;
-        
+
     }
-  
-   
+
+
 }

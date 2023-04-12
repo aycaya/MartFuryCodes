@@ -9,11 +9,11 @@ public class CameraController : MonoBehaviour
     [SerializeField] float movementSpeed;
     [SerializeField] float movementTime;
     [SerializeField] Vector3 zoomAmount;
-     Vector3 newPosition;
-     Vector3 newZoom;
-     Vector3 dragStartPosition;
-     Vector3 dragCurrentPosition;
-    
+    Vector3 newPosition;
+    Vector3 newZoom;
+    Vector3 dragStartPosition;
+    Vector3 dragCurrentPosition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +37,7 @@ public class CameraController : MonoBehaviour
             Plane plane = new Plane(Vector3.up, Vector3.zero);
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             float entry;
-            if(plane.Raycast(ray, out entry))
+            if (plane.Raycast(ray, out entry))
             {
                 dragStartPosition = ray.GetPoint(entry);
             }
@@ -47,7 +47,7 @@ public class CameraController : MonoBehaviour
             Plane plane = new Plane(Vector3.up, Vector3.zero);
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             float entry;
-            if(plane.Raycast(ray, out entry))
+            if (plane.Raycast(ray, out entry))
             {
                 dragCurrentPosition = ray.GetPoint(entry);
                 newPosition = transform.position + dragStartPosition - dragCurrentPosition;

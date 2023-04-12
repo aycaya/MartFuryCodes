@@ -13,18 +13,18 @@ public class UpgradeMenu : MonoBehaviour
     [SerializeField] GameObject shelverPrefab;
     [SerializeField] Transform door;
     GameObject[] shelvers;
-    int[] playerPrefsValues= new int[5] ;
+    int[] playerPrefsValues = new int[5];
     bool[] alreadyPaid = new bool[5];
     int upgradePrice = 10;
-    
+
     // Start is called before the first frame update
     private void Awake()
     {
-       
+
         moneyManager = FindObjectOfType<MoneyManager>();
         gameManager = FindObjectOfType<GameManager>();
-       
-        
+
+
 
         if (gameManager.WhatLevel == 1)
         {
@@ -69,13 +69,13 @@ public class UpgradeMenu : MonoBehaviour
     }
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void UpgradePurchaseButton(int param)
     {
@@ -86,8 +86,8 @@ public class UpgradeMenu : MonoBehaviour
                 PlayerPrefs.SetInt("upgrades" + param, 1);
                 Instantiate(shelverPrefab, door.position, door.rotation);
                 tasks[0].SetActive(false);
-            } 
-            else if(!alreadyPaid[0] && moneyManager.HasEnoughCoin(upgradePrice))
+            }
+            else if (!alreadyPaid[0] && moneyManager.HasEnoughCoin(upgradePrice))
             {
                 moneyManager.DecreaseCoinValue(upgradePrice);
                 PlayerPrefs.SetInt("upgrades" + param, 1);
@@ -95,7 +95,7 @@ public class UpgradeMenu : MonoBehaviour
                 tasks[0].SetActive(false);
             }
 
-          
+
         }
         else if (param == 1)
         {
@@ -111,7 +111,7 @@ public class UpgradeMenu : MonoBehaviour
                 tasks[1].SetActive(false);
 
             }
-           
+
         }
         else if (param == 2)//Item Profit x2
         {
@@ -128,7 +128,7 @@ public class UpgradeMenu : MonoBehaviour
                 moneyManager.ChangeItemProfits("Tomato", 2);
                 tasks[2].SetActive(false);
             }
-           
+
         }
         else if (param == 3)// All profit x2
         {
@@ -145,7 +145,7 @@ public class UpgradeMenu : MonoBehaviour
                 moneyManager.moneyCoefficient *= 2;
                 tasks[3].SetActive(false);
             }
-           
+
         }
         else if (param == 4)//Shelver Capacity +1
         {
@@ -176,7 +176,7 @@ public class UpgradeMenu : MonoBehaviour
 
                 tasks[4].SetActive(false);
             }
-           
+
         }
         else if (param == 5)
         {
@@ -191,7 +191,7 @@ public class UpgradeMenu : MonoBehaviour
                 PlayerPrefs.SetInt("upgrades" + param, 1);
                 tasks[5].SetActive(false);
             }
-           
+
         }
         else if (param == 6)
         {
@@ -204,7 +204,7 @@ public class UpgradeMenu : MonoBehaviour
                 moneyManager.DecreaseCoinValue(upgradePrice);
                 tasks[6].SetActive(false);
             }
-           
+
         }
         else if (param == 7)
         {
@@ -217,9 +217,9 @@ public class UpgradeMenu : MonoBehaviour
                 moneyManager.DecreaseCoinValue(upgradePrice);
                 tasks[7].SetActive(false);
             }
-            
+
         }
-       
+
     }
     void PlayerPrefsUpgrades()
     {
@@ -230,7 +230,7 @@ public class UpgradeMenu : MonoBehaviour
                 alreadyPaid[i] = true;
                 UpgradePurchaseButton(i);
             }
-            
+
         }
     }
 }

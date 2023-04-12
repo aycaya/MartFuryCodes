@@ -7,7 +7,7 @@ public class CoinCollectingAnimForUI : MonoBehaviour
     RectTransform Target;
     RectTransform Parent;
     private RectTransform Self;
-   
+
     public int UIlerpSpeed = 8;
     RectTransform CanvasRect;
     bool isItOpen = false;
@@ -17,7 +17,7 @@ public class CoinCollectingAnimForUI : MonoBehaviour
     MoneyManager moneyManager;
     public string Item
     {
-      
+
         set
         {
             whichItem = value;
@@ -27,7 +27,7 @@ public class CoinCollectingAnimForUI : MonoBehaviour
     }
     void Start()
     {
-        CanvasRect =  GameObject.FindWithTag("Canvas").GetComponent<RectTransform>();
+        CanvasRect = GameObject.FindWithTag("Canvas").GetComponent<RectTransform>();
         Self = GetComponent<RectTransform>();
         moneyManager = FindObjectOfType<MoneyManager>();
         Target = GameObject.Find("Coin_Target").GetComponent<RectTransform>();
@@ -36,7 +36,7 @@ public class CoinCollectingAnimForUI : MonoBehaviour
         Self.anchorMin = new Vector2(0f, 0f);
         Self.anchorMax = new Vector2(0f, 0f);
         Self.SetParent(CanvasRect);
-        Self.anchoredPosition = new Vector3(UItransform.x, UItransform.y,0);
+        Self.anchoredPosition = new Vector3(UItransform.x, UItransform.y, 0);
         transform.parent = Parent.transform;
         Self.anchorMin = new Vector2(0.5f, 0.5f);
         Self.anchorMax = new Vector2(0.5f, 0.5f);
@@ -51,13 +51,13 @@ public class CoinCollectingAnimForUI : MonoBehaviour
         {
             Reached();
         }
-       
+
     }
 
     public void Reached()
     {
         moneyManager.IncreaseCoinValue(whichItem);
         Destroy(gameObject);
-        
+
     }
 }

@@ -115,6 +115,6 @@ public class ItemMovementHandler : MonoBehaviour
         float xForce = Random.Range(gameEndJumpForceMin.x, gameEndJumpForceMax.x);
         float yForce = Random.Range(gameEndJumpForceMin.y, gameEndJumpForceMax.y);
         float zForce = Random.Range(gameEndJumpForceMin.z, gameEndJumpForceMax.z);
-        rb.AddForce(new Vector3(xForce, yForce, zForce),ForceMode.VelocityChange);
+        rb.AddForce(new Vector3(xForce, yForce, zForce), ForceMode.VelocityChange);
     }
 }

@@ -20,11 +20,11 @@ public class CardMenu : MonoBehaviour
     public string gemPriceID;
     public int gemPrice = 100;
     public TextMeshProUGUI gemPriceText;
-    
+
     MoneyManager moneyManager;
     PlayerController playerController;
     Toplayici playerToplayici;
-  
+
     GameObject[] shelvers;
     GameObject[] cashiers;
     private void Awake()
@@ -32,13 +32,13 @@ public class CardMenu : MonoBehaviour
         moneyManager = FindObjectOfType<MoneyManager>();
         playerController = FindObjectOfType<PlayerController>();
         playerToplayici = GameObject.FindGameObjectWithTag("Player").GetComponent<Toplayici>();
-        
+
         for (int i = 0; i < CardBuffAmount.Length; i++)
         {
             CardBuffAmount[i] = PlayerPrefs.GetInt(CardBuffID[i], CardBuffAmount[i]);
             CardLevel[i] = PlayerPrefs.GetInt(CardLevelID[i], CardLevel[i]);
             CardLevelText[i].text = CardLevel[i].ToString();
-           
+
         }
         gemPrice = PlayerPrefs.GetInt(gemPriceID, gemPrice);
         gemPriceText.text = gemPrice.ToString();
@@ -77,7 +77,7 @@ public class CardMenu : MonoBehaviour
         }
 
     }
-   
+
     public void RandomUpgrade()
     {
         switch (Random.Range(0, 4))
@@ -85,7 +85,7 @@ public class CardMenu : MonoBehaviour
             case 0://Player Speed + Capacity
                 if (moneyManager.HasEnoughGem(gemPrice))
                 {
-                  
+
                     if (CardLevel[0] >= maxCardLevel[0])
                     {
                         CardLevelText[0].text = "MAX";
@@ -100,7 +100,7 @@ public class CardMenu : MonoBehaviour
                     }
                     CardBuffAmount[0] += 1;
                     PlayerPrefs.SetInt(CardBuffID[0], CardBuffAmount[0]);
-                    UpgradeAmountText[0].text =  " Player Speed & Capacity";
+                    UpgradeAmountText[0].text = " Player Speed & Capacity";
                     moneyManager.DecreaseGemValue(gemPrice);
                     gemPrice += 100;
                     gemPriceText.text = gemPrice.ToString();
@@ -108,16 +108,16 @@ public class CardMenu : MonoBehaviour
                     CardLevel[0] += 1;
                     PlayerPrefs.SetInt(CardLevelID[0], CardLevel[0]);
                     CardLevelText[0].text = CardLevel[0].ToString();
-                  
 
-                    var speedX= PlayerPrefs.GetInt("Speed", 0);
+
+                    var speedX = PlayerPrefs.GetInt("Speed", 0);
                     speedX++;
                     PlayerPrefs.SetInt("Speed", speedX);
                     playerController.UpdateSpeed();
-                    
+
                     playerToplayici.AddPlayerCapacity();
 
-                    
+
                     if (CardLevel[0] >= maxCardLevel[0])
                     {
                         CardLevelText[0].text = "MAX";
@@ -153,7 +153,7 @@ public class CardMenu : MonoBehaviour
                     CardLevel[1] += 1;
                     PlayerPrefs.SetInt(CardLevelID[1], CardLevel[1]);
                     CardLevelText[1].text = CardLevel[1].ToString();
-                   
+
                     moneyManager.moneyCoefficient += (moneyManager.moneyCoefficient * 10) / 100;
                     PlayerPrefs.SetFloat("IncomeCoefficient", moneyManager.moneyCoefficient);
                     if (CardLevel[1] >= maxCardLevel[1])
@@ -190,18 +190,18 @@ public class CardMenu : MonoBehaviour
                     CardLevel[2] += 1;
                     PlayerPrefs.SetInt(CardLevelID[2], CardLevel[2]);
                     CardLevelText[2].text = CardLevel[2].ToString();
-                   
 
-                    shelvers= GameObject.FindGameObjectsWithTag("Shelver");
-                    
+
+                    shelvers = GameObject.FindGameObjectsWithTag("Shelver");
+
                     foreach (GameObject shelver in shelvers)
                     {
-                        var aiParam= shelver.GetComponent<ShelverAI>();
+                        var aiParam = shelver.GetComponent<ShelverAI>();
                         aiParam.UpdateCapacity();
                         aiParam.UpdateSpeed();
                     }
 
-                        if (CardLevel[2] >= maxCardLevel[2])
+                    if (CardLevel[2] >= maxCardLevel[2])
                     {
                         CardLevelText[2].text = "MAX";
                     }
@@ -214,7 +214,7 @@ public class CardMenu : MonoBehaviour
             case 3://Cashier Speed
                 if (moneyManager.HasEnoughGem(gemPrice))
                 {
-                   
+
                     if (CardLevel[3] >= maxCardLevel[3])
                     {
                         CardLevelText[3].text = "MAX";
@@ -236,7 +236,7 @@ public class CardMenu : MonoBehaviour
                     CardLevel[3] += 1;
                     PlayerPrefs.SetInt(CardLevelID[3], CardLevel[3]);
                     CardLevelText[3].text = CardLevel[3].ToString();
-                    
+
 
                     cashiers = GameObject.FindGameObjectsWithTag("CashBox");
 

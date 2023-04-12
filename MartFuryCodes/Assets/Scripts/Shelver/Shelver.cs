@@ -23,7 +23,7 @@ public class Shelver : MonoBehaviour
     GameObject gameObjToUse;
     [SerializeField] GameObject parentStackObject;
 
-  
+
     void Start()
     {
         GridsPieces = new GameObject[parentStackObject.transform.childCount];
@@ -36,14 +36,14 @@ public class Shelver : MonoBehaviour
         }
     }
 
-   
+
     private void OnTriggerStay(Collider other)
     {
 
         if (other.gameObject.CompareTag("PutIn") && !isCooldownOn)
         {
             currentTimer += Time.deltaTime;
-           
+
             if (currentTimer >= waitTimer)
             {
 
@@ -67,7 +67,7 @@ public class Shelver : MonoBehaviour
         if (other.gameObject.CompareTag("PutIn"))
         {
             currentTimer = 0f;
-            
+
         }
 
     }
@@ -131,8 +131,8 @@ public class Shelver : MonoBehaviour
                 j++;
             }
         }
-    } 
+    }
 }
-    
+
 
 

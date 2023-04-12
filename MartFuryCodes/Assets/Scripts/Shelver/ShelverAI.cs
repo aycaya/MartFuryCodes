@@ -60,7 +60,7 @@ public class ShelverAI : MonoBehaviour
         GridsPiecesPumpkin = new GameObject[pumpkinParent.transform.childCount];
         shelfAreas = new Transform[shelfParent.transform.childCount];
         productAreas = new Transform[storageParent.transform.childCount];
-        
+
         for (int i = 0; i < tomatoParent.transform.childCount; i++)
         {
             GridsPiecesTomato[i] = tomatoParent.transform.GetChild(i).gameObject;
@@ -81,7 +81,7 @@ public class ShelverAI : MonoBehaviour
         {
             productAreas[i] = storageParent.transform.GetChild(i);
         }
-       
+
     }
 
     // Update is called once per frame
@@ -94,7 +94,7 @@ public class ShelverAI : MonoBehaviour
         }
 
     }
-  
+
     private void HandleShelverStates()
     {
         switch (currentState)

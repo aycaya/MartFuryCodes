@@ -21,7 +21,7 @@ public class TrashCan : MonoBehaviour
     GameObject gameObjToUse;
     [SerializeField] GameObject parentStackObject;
 
-    
+
     void Start()
     {
         GridsPieces = new GameObject[parentStackObject.transform.childCount];
@@ -34,14 +34,14 @@ public class TrashCan : MonoBehaviour
         }
     }
 
-  
+
     private void OnTriggerStay(Collider other)
     {
 
         if (other.gameObject.CompareTag("TrashCan") && !isCooldownOn)
         {
             currentTimer += Time.deltaTime;
-           
+
             if (currentTimer >= waitTimer)
             {
                 isCooldownOn = true;
@@ -64,7 +64,7 @@ public class TrashCan : MonoBehaviour
         if (other.gameObject.CompareTag("PutIn"))
         {
             currentTimer = 0f;
-           
+
         }
 
     }
@@ -94,7 +94,7 @@ public class TrashCan : MonoBehaviour
                 tempTrue = true;
                 break;
 
-               
+
 
             }
 
@@ -103,13 +103,13 @@ public class TrashCan : MonoBehaviour
         if (tempTrue)
         {
             GameObject temp = GridsPieces[index].transform.GetChild(0).gameObject;
-          
+
             Vector3 initialPoint = temp.transform.position;
             Vector3 direction = (Destination - initialPoint).normalized;
 
 
             isGridEmpty[index] = true;
-           
+
 
             OnPickUp(temp.GetComponent<Collactables>(), picker);
 
@@ -119,20 +119,20 @@ public class TrashCan : MonoBehaviour
     }
     void OnPickUp(Collactables collectable, GameObject picker)
     {
-       
+
         collectable.ToplandiMi = true;
         collectable.SetFlightTarget(picker.transform);
         collectable.gameObject.transform.SetParent(picker.transform);
     }
     void WaitAndDestroy(GameObject collectable, GameObject picker)
     {
-        if (picker.transform.GetChild(2).transform.position==Vector3.zero)
+        if (picker.transform.GetChild(2).transform.position == Vector3.zero)
         {
             Destroy(collectable.gameObject);
 
         }
     }
-    }
+}
 
 
 

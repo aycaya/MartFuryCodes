@@ -43,7 +43,7 @@ public class TruckPickUp : MonoBehaviour
 
 
     }
-   
+
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("TruckStop") && !isCooldownOn)
@@ -53,12 +53,12 @@ public class TruckPickUp : MonoBehaviour
             loadingBar.fillAmount = currentTimer / waitTimer;
             if (currentTimer >= waitTimer)
             {
-              
+
                 isCooldownOn = true;
-                
+
                 Invoke("CooldownFinish", 2f);
                 currentTimer = 0f;
-              
+
                 loadingBar.fillAmount = 0f;
                 grayPart.SetActive(false);
 

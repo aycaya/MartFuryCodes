@@ -10,7 +10,7 @@ public class CameraFollow : MonoBehaviour
     public float smoothSpeed = 0.125f;
     public Vector3 offset;
     Camera sceneCamera;
-   
+
     Vector3 desiredPosition;
     Vector3 desiredAngles;
     Vector3 initialCameraPos;
@@ -18,7 +18,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] float FOVIncrement = 5f;
     [SerializeField] float FOVLimit = 100f;
     [SerializeField] Vector3 defaultEulerAngles = new Vector3(60f, 0f, 0f);
-    [SerializeField] Vector3 zoomedEulerAngles= new Vector3(60f, 0f, 0f);
+    [SerializeField] Vector3 zoomedEulerAngles = new Vector3(60f, 0f, 0f);
     [SerializeField] Vector3 zoomedPosOffset = new Vector3(0f, 0f, 0f);
     [SerializeField] float zoomedFov = 60f;
     [SerializeField] InputAction zoomButton;
@@ -58,15 +58,15 @@ public class CameraFollow : MonoBehaviour
         {
             return;
         }
-       
-        
+
+
         desiredPosition = target.position + offset;
         desiredAngles = defaultEulerAngles;
-      
+
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
         Vector3 smoothedAngle = Vector3.Lerp(transform.eulerAngles, desiredAngles, smoothSpeed * Time.deltaTime);
         transform.position = smoothedPosition;
         transform.eulerAngles = smoothedAngle;
     }
 
-   }
+}

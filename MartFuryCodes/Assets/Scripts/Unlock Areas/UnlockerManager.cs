@@ -8,24 +8,24 @@ public class UnlockerManager : MonoBehaviour
     int currentAreaId;
     void Start()
     {
-       SortOutAtStart();
+        SortOutAtStart();
     }
 
-   
-    
+
+
     public void SortOutUnlockera(int param)
     {
         if (param < unlockers.Length)
         {
-           
+
 
             unlockers[param].SetActive(true);
         }
-       else
+        else
         {
             return;
         }
-       
+
     }
     void SortOutAtStart()
     {
@@ -37,7 +37,7 @@ public class UnlockerManager : MonoBehaviour
                 var areaPrnt = unlockers[i].GetComponent<UnlockingAreas>().AreaParent;
 
                 areaPrnt.gameObject.transform.Find(areaPrnt.gameObject.name).gameObject.SetActive(true);
-              
+
 
 
             }

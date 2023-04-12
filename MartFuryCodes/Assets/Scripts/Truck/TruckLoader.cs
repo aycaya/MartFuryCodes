@@ -5,9 +5,9 @@ using UnityEngine;
 public class TruckLoader : MonoBehaviour
 {
     [SerializeField] int itemCount = 0;
-    [SerializeField] GameObject item ;
-    
-   
+    [SerializeField] GameObject item;
+
+
     GameObject truckObject;
     GameObject truckStorageChild;
 
@@ -27,6 +27,6 @@ public class TruckLoader : MonoBehaviour
             temp.transform.SetParent(truckStorageChild.transform.GetChild(i));
             temp.transform.localPosition = Vector3.zero;
         }
-       
+
     }
 }
